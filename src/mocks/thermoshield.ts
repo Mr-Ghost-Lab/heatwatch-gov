@@ -192,7 +192,7 @@ export function mockDashboard(): DashboardSummary {
   return {
     updatedAt: new Date().toISOString(),
     jurisdiction: "Greater Chennai Corporation — Chennai, Tamil Nadu",
-    criticalWard: MOCK_WARDS[0],
+    criticalWard: MOCK_WARDS[0]!,
     counts,
     populationExposed: MOCK_WARDS.filter((w) => w.riskLevel === "CRITICAL" || w.riskLevel === "HIGH").reduce(
       (sum, w) => sum + w.population.totalPopulation,
@@ -205,7 +205,7 @@ export function mockDashboard(): DashboardSummary {
 }
 
 export function mockForecast(wardId = "W128"): ForecastDay[] {
-  const ward = MOCK_WARDS.find((w) => w.id === wardId) ?? MOCK_WARDS[0];
+  const ward = MOCK_WARDS.find((w) => w.id === wardId) ?? MOCK_WARDS[0]!;
   const offsets = [0, 0.6, 1.5, 0.4, -1.2, -2.4];
   const labels = ["Today", "+1 Day", "+2 Days", "+3 Days", "+4 Days", "+5 Days"];
   return offsets.map((delta, i) => {
@@ -214,7 +214,7 @@ export function mockForecast(wardId = "W128"): ForecastDay[] {
     const riskIndex = Math.round(ward.riskIndex + delta * 6);
     const date = new Date(Date.now() + i * 86400000).toISOString().slice(0, 10);
     return {
-      label: labels[i],
+      label: labels[i]!,
       date,
       temperatureC,
       minTemperatureC: +(temperatureC - 8.4).toFixed(1),
