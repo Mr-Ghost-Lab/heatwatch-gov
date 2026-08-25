@@ -76,7 +76,7 @@ async function rawRequest<T>(path: string, options: RequestOptions, token: strin
     response = await fetch(buildUrl(path, options.query), {
       method: options.method ?? "GET",
       headers,
-      body: options.body === undefined ? undefined : JSON.stringify(options.body),
+      body: options.body === undefined ? null : JSON.stringify(options.body),
       signal: options.signal,
     });
   } catch {
