@@ -77,7 +77,7 @@ async function rawRequest<T>(path: string, options: RequestOptions, token: strin
       method: options.method ?? "GET",
       headers,
       body: options.body === undefined ? null : JSON.stringify(options.body),
-      signal: options.signal,
+      signal: options.signal ?? null,
     });
   } catch {
     throw new ApiError(
