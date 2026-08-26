@@ -13,9 +13,9 @@ import {
 export interface Column<T> {
   key: string;
   header: string;
-  sortValue?: (row: T) => string | number;
+  sortValue?: ((row: T) => string | number) | undefined;
   cell: (row: T) => ReactNode;
-  className?: string;
+  className?: string | undefined;
 }
 
 export function DataTable<T>({
@@ -31,13 +31,13 @@ export function DataTable<T>({
 }: {
   rows: T[];
   columns: Column<T>[];
-  searchable?: (row: T) => string;
-  searchPlaceholder?: string;
-  pageSize?: number;
+  searchable?: ((row: T) => string) | undefined;
+  searchPlaceholder?: string | undefined;
+  pageSize?: number | undefined;
   caption: string;
-  emptyMessage?: string;
-  toolbar?: ReactNode;
-  onRowClick?: (row: T) => void;
+  emptyMessage?: string | undefined;
+  toolbar?: ReactNode | undefined;
+  onRowClick?: ((row: T) => void) | undefined;
 }) {
   const [query, setQuery] = useState("");
   const [sort, setSort] = useState<{ key: string; dir: "asc" | "desc" } | null>(null);

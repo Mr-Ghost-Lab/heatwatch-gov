@@ -21,8 +21,8 @@ export function RiskBadge({
   showDot = true,
 }: {
   level: RiskLevel;
-  className?: string;
-  showDot?: boolean;
+  className?: string | undefined;
+  showDot?: boolean | undefined;
 }) {
   return (
     <span

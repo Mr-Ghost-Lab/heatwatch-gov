@@ -9,8 +9,8 @@ export function PageHeader({
 }: {
   title: string;
   description: string;
-  meta?: string;
-  actions?: ReactNode;
+  meta?: string | undefined;
+  actions?: ReactNode | undefined;
 }) {
   return (
     <header className="flex flex-col gap-3 border-b border-border pb-4 md:flex-row md:items-end md:justify-between">

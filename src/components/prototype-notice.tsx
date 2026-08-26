@@ -2,7 +2,7 @@ import { USE_MOCK_DATA } from "@/api/client";
 import { cn } from "@/lib/utils";
 
 /** Explicit, non-negotiable disclosure whenever simulated data is displayed. */
-export function PrototypeNotice({ className }: { className?: string }) {
+export function PrototypeNotice({ className }: { className?: string | undefined }) {
   if (!USE_MOCK_DATA) return null;
   return (
     <p
@@ -17,7 +17,7 @@ export function PrototypeNotice({ className }: { className?: string }) {
   );
 }
 
-export function PrototypeTag({ className }: { className?: string }) {
+export function PrototypeTag({ className }: { className?: string | undefined }) {
   if (!USE_MOCK_DATA) return null;
   return (
     <span

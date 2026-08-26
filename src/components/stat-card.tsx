@@ -11,10 +11,10 @@ export function StatCard({
 }: {
   label: string;
   value: string | number;
-  unit?: string;
-  hint?: string;
-  tone?: "neutral" | "low" | "moderate" | "high" | "critical" | "primary";
-  footer?: ReactNode;
+  unit?: string | undefined;
+  hint?: string | undefined;
+  tone?: "neutral" | "low" | "moderate" | "high" | "critical" | "primary" | undefined;
+  footer?: ReactNode | undefined;
 }) {
   const toneClass = {
     neutral: "text-foreground",
