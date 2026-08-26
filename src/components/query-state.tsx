@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
 
-export function LoadingPanel({ rows = 4, label = "Loading data" }: { rows?: number; label?: string }) {
+export function LoadingPanel({ rows = 4, label = "Loading data" }: { rows?: number | undefined; label?: string | undefined }) {
   return (
     <div className="gov-panel p-4" role="status" aria-live="polite" aria-label={label}>
       <div className="space-y-3">
@@ -20,7 +20,7 @@ export function ErrorPanel({
   onRetry,
 }: {
   error: unknown;
-  onRetry?: () => void;
+  onRetry?: (() => void) | undefined;
 }) {
   const message =
     error instanceof Error ? error.message : "An unexpected error occurred while retrieving data.";
@@ -55,9 +55,9 @@ export function QueryBoundary({
 }: {
   isPending: boolean;
   error: unknown;
-  refetch?: () => void;
+  refetch?: (() => void) | undefined;
   children: ReactNode;
-  rows?: number;
+  rows?: number | undefined;
 }) {
   if (isPending) return <LoadingPanel rows={rows} />;
   if (error) return <ErrorPanel error={error} onRetry={refetch} />;
