@@ -79,11 +79,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "ThermoShield — Heatwave Intelligence Platform" },
+      {
+        name: "description",
+        content:
+          "Government heatwave early-warning and intervention platform: ward-level heat risk, thermal stress, health impact and response tracking.",
+      },
+      { name: "author", content: "ThermoShield" },
+      { property: "og:title", content: "ThermoShield — Heatwave Intelligence Platform" },
+      {
+        property: "og:description",
+        content: "Ward-level heat risk intelligence and early warning for urban local bodies.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@Lovable" },
