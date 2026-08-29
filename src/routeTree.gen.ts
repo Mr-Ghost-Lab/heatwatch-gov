@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as ForecastRouteImport } from './routes/forecast'
+import { Route as HealthMetricRouteImport } from './routes/health-metric'
 import { Route as HealthRiskRouteImport } from './routes/health-risk'
 import { Route as PopulationRouteImport } from './routes/population'
 import { Route as RiskMapRouteImport } from './routes/risk-map'
@@ -30,6 +31,11 @@ const DashboardRoute = DashboardRouteImport.update({
 const ForecastRoute = ForecastRouteImport.update({
   id: '/forecast',
   path: '/forecast',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HealthMetricRoute = HealthMetricRouteImport.update({
+  id: '/health-metric',
+  path: '/health-metric',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HealthRiskRoute = HealthRiskRouteImport.update({
@@ -57,6 +63,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/dashboard': typeof DashboardRoute
   '/forecast': typeof ForecastRoute
+  '/health-metric': typeof HealthMetricRoute
   '/health-risk': typeof HealthRiskRoute
   '/population': typeof PopulationRoute
   '/risk-map': typeof RiskMapRoute
@@ -66,6 +73,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/dashboard': typeof DashboardRoute
   '/forecast': typeof ForecastRoute
+  '/health-metric': typeof HealthMetricRoute
   '/health-risk': typeof HealthRiskRoute
   '/population': typeof PopulationRoute
   '/risk-map': typeof RiskMapRoute
@@ -76,6 +84,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/dashboard': typeof DashboardRoute
   '/forecast': typeof ForecastRoute
+  '/health-metric': typeof HealthMetricRoute
   '/health-risk': typeof HealthRiskRoute
   '/population': typeof PopulationRoute
   '/risk-map': typeof RiskMapRoute
@@ -87,6 +96,7 @@ export interface FileRouteTypes {
     | '/'
     | '/dashboard'
     | '/forecast'
+    | '/health-metric'
     | '/health-risk'
     | '/population'
     | '/risk-map'
@@ -96,6 +106,7 @@ export interface FileRouteTypes {
     | '/'
     | '/dashboard'
     | '/forecast'
+    | '/health-metric'
     | '/health-risk'
     | '/population'
     | '/risk-map'
@@ -105,6 +116,7 @@ export interface FileRouteTypes {
     | '/'
     | '/dashboard'
     | '/forecast'
+    | '/health-metric'
     | '/health-risk'
     | '/population'
     | '/risk-map'
@@ -115,6 +127,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DashboardRoute: typeof DashboardRoute
   ForecastRoute: typeof ForecastRoute
+  HealthMetricRoute: typeof HealthMetricRoute
   HealthRiskRoute: typeof HealthRiskRoute
   PopulationRoute: typeof PopulationRoute
   RiskMapRoute: typeof RiskMapRoute
@@ -142,6 +155,13 @@ declare module '@tanstack/react-router' {
       path: '/forecast'
       fullPath: '/forecast'
       preLoaderRoute: typeof ForecastRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/health-metric': {
+      id: '/health-metric'
+      path: '/health-metric'
+      fullPath: '/health-metric'
+      preLoaderRoute: typeof HealthMetricRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/health-risk': {
@@ -179,6 +199,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DashboardRoute: DashboardRoute,
   ForecastRoute: ForecastRoute,
+  HealthMetricRoute: HealthMetricRoute,
   HealthRiskRoute: HealthRiskRoute,
   PopulationRoute: PopulationRoute,
   RiskMapRoute: RiskMapRoute,
