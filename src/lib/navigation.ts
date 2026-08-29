@@ -26,6 +26,7 @@ export const NAV_ITEMS: NavItem[] = [
   { to: "/dashboard", label: "Dashboard", group: "Situation", roles: ALL },
   { to: "/risk-map", label: "Heat Risk Map", group: "Situation", roles: ALL },
   { to: "/forecast", label: "Forecast", group: "Situation", roles: ALL },
+  { to: "/health-metric", label: "Health Metric", group: "Assessment", roles: ["CITIZEN"] },
   { to: "/thermal-stress", label: "Thermal Stress", group: "Assessment", roles: OFFICIAL },
   { to: "/health-risk", label: "Health Impact", group: "Assessment", roles: OFFICIAL },
   { to: "/population", label: "Vulnerable Population", group: "Assessment", roles: OFFICIAL },
