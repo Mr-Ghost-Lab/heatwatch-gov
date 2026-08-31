@@ -11,12 +11,17 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AlertsRouteImport } from './routes/alerts'
+import { Route as AnalyticsRouteImport } from './routes/analytics'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as ForecastRouteImport } from './routes/forecast'
 import { Route as HealthMetricRouteImport } from './routes/health-metric'
 import { Route as HealthRiskRouteImport } from './routes/health-risk'
 import { Route as PopulationRouteImport } from './routes/population'
+import { Route as RecommendedActionsRouteImport } from './routes/recommended-actions'
+import { Route as ReportsRouteImport } from './routes/reports'
 import { Route as RiskMapRouteImport } from './routes/risk-map'
+import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as SystemStatusRouteImport } from './routes/system-status'
 import { Route as ThermalStressRouteImport } from './routes/thermal-stress'
 
 const IndexRoute = IndexRouteImport.update({
@@ -27,6 +32,11 @@ const IndexRoute = IndexRouteImport.update({
 const AlertsRoute = AlertsRouteImport.update({
   id: '/alerts',
   path: '/alerts',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AnalyticsRoute = AnalyticsRouteImport.update({
+  id: '/analytics',
+  path: '/analytics',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DashboardRoute = DashboardRouteImport.update({
@@ -54,9 +64,29 @@ const PopulationRoute = PopulationRouteImport.update({
   path: '/population',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RecommendedActionsRoute = RecommendedActionsRouteImport.update({
+  id: '/recommended-actions',
+  path: '/recommended-actions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReportsRoute = ReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RiskMapRoute = RiskMapRouteImport.update({
   id: '/risk-map',
   path: '/risk-map',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SystemStatusRoute = SystemStatusRouteImport.update({
+  id: '/system-status',
+  path: '/system-status',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ThermalStressRoute = ThermalStressRouteImport.update({
@@ -68,35 +98,50 @@ const ThermalStressRoute = ThermalStressRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/alerts': typeof AlertsRoute
+  '/analytics': typeof AnalyticsRoute
   '/dashboard': typeof DashboardRoute
   '/forecast': typeof ForecastRoute
   '/health-metric': typeof HealthMetricRoute
   '/health-risk': typeof HealthRiskRoute
   '/population': typeof PopulationRoute
+  '/recommended-actions': typeof RecommendedActionsRoute
+  '/reports': typeof ReportsRoute
   '/risk-map': typeof RiskMapRoute
+  '/settings': typeof SettingsRoute
+  '/system-status': typeof SystemStatusRoute
   '/thermal-stress': typeof ThermalStressRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/alerts': typeof AlertsRoute
+  '/analytics': typeof AnalyticsRoute
   '/dashboard': typeof DashboardRoute
   '/forecast': typeof ForecastRoute
   '/health-metric': typeof HealthMetricRoute
   '/health-risk': typeof HealthRiskRoute
   '/population': typeof PopulationRoute
+  '/recommended-actions': typeof RecommendedActionsRoute
+  '/reports': typeof ReportsRoute
   '/risk-map': typeof RiskMapRoute
+  '/settings': typeof SettingsRoute
+  '/system-status': typeof SystemStatusRoute
   '/thermal-stress': typeof ThermalStressRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/alerts': typeof AlertsRoute
+  '/analytics': typeof AnalyticsRoute
   '/dashboard': typeof DashboardRoute
   '/forecast': typeof ForecastRoute
   '/health-metric': typeof HealthMetricRoute
   '/health-risk': typeof HealthRiskRoute
   '/population': typeof PopulationRoute
+  '/recommended-actions': typeof RecommendedActionsRoute
+  '/reports': typeof ReportsRoute
   '/risk-map': typeof RiskMapRoute
+  '/settings': typeof SettingsRoute
+  '/system-status': typeof SystemStatusRoute
   '/thermal-stress': typeof ThermalStressRoute
 }
 export interface FileRouteTypes {
@@ -104,46 +149,66 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/alerts'
+    | '/analytics'
     | '/dashboard'
     | '/forecast'
     | '/health-metric'
     | '/health-risk'
     | '/population'
+    | '/recommended-actions'
+    | '/reports'
     | '/risk-map'
+    | '/settings'
+    | '/system-status'
     | '/thermal-stress'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/alerts'
+    | '/analytics'
     | '/dashboard'
     | '/forecast'
     | '/health-metric'
     | '/health-risk'
     | '/population'
+    | '/recommended-actions'
+    | '/reports'
     | '/risk-map'
+    | '/settings'
+    | '/system-status'
     | '/thermal-stress'
   id:
     | '__root__'
     | '/'
     | '/alerts'
+    | '/analytics'
     | '/dashboard'
     | '/forecast'
     | '/health-metric'
     | '/health-risk'
     | '/population'
+    | '/recommended-actions'
+    | '/reports'
     | '/risk-map'
+    | '/settings'
+    | '/system-status'
     | '/thermal-stress'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AlertsRoute: typeof AlertsRoute
+  AnalyticsRoute: typeof AnalyticsRoute
   DashboardRoute: typeof DashboardRoute
   ForecastRoute: typeof ForecastRoute
   HealthMetricRoute: typeof HealthMetricRoute
   HealthRiskRoute: typeof HealthRiskRoute
   PopulationRoute: typeof PopulationRoute
+  RecommendedActionsRoute: typeof RecommendedActionsRoute
+  ReportsRoute: typeof ReportsRoute
   RiskMapRoute: typeof RiskMapRoute
+  SettingsRoute: typeof SettingsRoute
+  SystemStatusRoute: typeof SystemStatusRoute
   ThermalStressRoute: typeof ThermalStressRoute
 }
 
@@ -161,6 +226,13 @@ declare module '@tanstack/react-router' {
       path: '/alerts'
       fullPath: '/alerts'
       preLoaderRoute: typeof AlertsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/analytics': {
+      id: '/analytics'
+      path: '/analytics'
+      fullPath: '/analytics'
+      preLoaderRoute: typeof AnalyticsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/dashboard': {
@@ -198,11 +270,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PopulationRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/recommended-actions': {
+      id: '/recommended-actions'
+      path: '/recommended-actions'
+      fullPath: '/recommended-actions'
+      preLoaderRoute: typeof RecommendedActionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reports': {
+      id: '/reports'
+      path: '/reports'
+      fullPath: '/reports'
+      preLoaderRoute: typeof ReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/risk-map': {
       id: '/risk-map'
       path: '/risk-map'
       fullPath: '/risk-map'
       preLoaderRoute: typeof RiskMapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/system-status': {
+      id: '/system-status'
+      path: '/system-status'
+      fullPath: '/system-status'
+      preLoaderRoute: typeof SystemStatusRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/thermal-stress': {
@@ -218,12 +318,17 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AlertsRoute: AlertsRoute,
+  AnalyticsRoute: AnalyticsRoute,
   DashboardRoute: DashboardRoute,
   ForecastRoute: ForecastRoute,
   HealthMetricRoute: HealthMetricRoute,
   HealthRiskRoute: HealthRiskRoute,
   PopulationRoute: PopulationRoute,
+  RecommendedActionsRoute: RecommendedActionsRoute,
+  ReportsRoute: ReportsRoute,
   RiskMapRoute: RiskMapRoute,
+  SettingsRoute: SettingsRoute,
+  SystemStatusRoute: SystemStatusRoute,
   ThermalStressRoute: ThermalStressRoute,
 }
 export const routeTree = rootRouteImport
